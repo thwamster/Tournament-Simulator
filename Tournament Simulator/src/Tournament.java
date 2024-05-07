@@ -1,6 +1,6 @@
 public class Tournament {
     /* Program Characteristics */
-    public static final int numIterations = 100;
+    public static final int numIterations = 1000;
 
     /* Tournament Characteristics */
     public static int numTeams = -1;

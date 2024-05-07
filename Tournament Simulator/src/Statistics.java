@@ -174,7 +174,7 @@ public class Statistics {
                     // prints the record
                     System.out.println("From " +
                             (j - 1) + "-" + (i + 1 - j) + " to " + (j) + "-" + (i - j)
-                            + ": " + pullupRecord[i][j]);
+                            + ": " + roundToDecimal.format(pullupRecord[i][j]));
                 }
             }
         }

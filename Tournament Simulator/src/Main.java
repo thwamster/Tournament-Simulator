@@ -1,133 +1,203 @@
+import java.text.DecimalFormat;
+
 public class Main {
-    /* Program Characteristics */
-    private static boolean existing;
-    private static int directory;
+    /* Global Variables */
+    public static int numTeams;
+    public static int numPrelims;
+    public static int numElims;
+    public static int numIterations;
+    public static String[] teamList;
+    public static String[] schoolList;
+    public static String[] entryList;
+    public static double[] skillList;
+    public static Calculator calculator;
+    private static final DecimalFormat roundToDecimal = new DecimalFormat("0.#");
+    private static final DecimalFormat roundToWhole = new DecimalFormat("0");
 
     /* Main Method */
     public static void main(String[] args) {
-        // prints table of contents
+        // initializes starting values
+        numIterations = 100;
+
+        // receives global variables from input
         System.out.println("—————————————————————————————————————————————————————————");
-        System.out.println("Tournament Simulator");
+        System.out.println("Tournament values:");
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-        System.out.println("Starting guide:");
-        System.out.println("0 --> Help Menu");
-        System.out.println("1 --> Preliminary Round Statistics");
-        System.out.println("2 --> Elimination Round Statistics");
-        System.out.println("3 --> Elimination Bracket Generator");
-        System.out.println("4 --> OpenCaselist Wiki Generator");
-        System.out.println("5 --> Reset Tournament");
-        System.out.println("-1 -> Terminate Program");
+        numTeams = Filter.filterWholeNum("Number of teams debating: ");
+        numPrelims = Filter.filterWholeNum("Number of prelim rounds: ");
+        numElims = Filter.filterWholeNum("Number of elim rounds: ");
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+        schoolList = Filter.filterCode("List of team codes: ");
+        entryList = Filter.filterEntry("List of entry names: ");
+        skillList = Filter.filterDouble("List of team elos: ");
+        System.out.println("—————————————————————————————————————————————————————————");
 
-        // resets the tournament
-        existing = false;
-
-        // runs the program until terminate directory is entered
-        int program;
-        do {
-            program = directory();
+        // initializes the list of teams
+        teamList = new String[numTeams];
+        for (int i = 0; i < numTeams; i++) {
+            teamList[i] = schoolList[i] + entryList[i];
         }
-        while (program == 0);
+
+        // iterates
+        calculator = new Calculator();
+        calculator.calculate();
+
+        // runs the tournament simulator
+        prelimStatistics();
+        elimStatistics();
+        if (!teamList[0].equals("School0Entry0")) {
+            wikis();
+        }
     }
 
-    /* Program Methods */
-    private static int directory() {
-        // initializes directory
-        directory = InputFilter.filterDirectory("Enter directory: ");
+    /* Statistics Methods */
+    public static void prelimStatistics() {
+        // statistics
+        double[] record = calculator.getRecord();
+        System.out.println("Preliminary round statistics:");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
-        // runs desired program
-        switch (directory) {
-            case 0 -> { // --> Help Menu
-                System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-                System.out.println("Help menu:");
-                System.out.println("0 --> Regenerates this menu in its entirety.");
-                System.out.println("1 --> Receives tournament values and calculates expected ");
-                System.out.println("      statistics for all preliminary rounds. These stats ");
-                System.out.println("      include records and pullups.");
-                System.out.println("2 --> Receives tournament values and calculates expected ");
-                System.out.println("      statistics for all elimination rounds. These stats ");
-                System.out.println("      include the size of the first elimination round ");
-                System.out.println("      and teams breaking, screwed, debating and byed.");
-                System.out.println("3 --> Receives tournament values and calculates the full ");
-                System.out.println("      elimination bracket and expected elimination size.");
-                System.out.println("4 --> Receives team and entry names and will return ");
-                System.out.println("      OpenCaselist links to all team wikis, by ");
-                System.out.println("      automatically matching school aliases and debater ");
-                System.out.println("      names by initials.");
-                System.out.println("5 --> Resets the current tournament values previously ");
-                System.out.println("      inputted and saved in the program. Run this ");
-                System.out.println("      before entering new data. Automatically ran ");
-                System.out.println("      when booting the program.");
-                System.out.println("-1 -> Ends the current program immediately. Your data ");
-                System.out.println("      is still viewable and copyable in the terminal.");
-                System.out.println("Note: Type 'n/a' when prompted to input team data to ");
-                System.out.println("      auto-fill team codes, entry names, and skills.");
-                System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-                return 0;
-            }
-            case 1 -> { // --> Preliminary Round Statistics
-                generate();
-                Statistics.calculate();
-                Statistics.printPrelims();
-                return 0;
-            }
-            case 2 -> { // --> Elimination Round Statistics
-                generate();
-                Statistics.calculate();
-                Statistics.printElims();
-                return 0;
-            }
-            case 3 -> { // --> Elimination Bracket Generator
-                generate();
-                ElimBracket.calculate();
-                ElimBracket.printElims();
-                return 0;
-            }
-            case 4 -> { // --> OpenCaselist Wiki Generator
-                generate();
-                OpenCaselist.printWikis();
-                return 0;
-            }
-            case 5 -> { // --> Reset Tournament
-                Tournament.resetTournament();
-                existing = false;
-                System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-                System.out.println("Tournament has been reset.");
-                System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-                return 0;
-            }
-            default -> { // -> Terminate Program
-                System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-                System.out.println("Program terminated. Thank you for your participation.");
-                System.out.println("—————————————————————————————————————————————————————————");
-                return 1;
+        // prints expected record statistics
+        for (int i = 0; i < numPrelims + 1; i ++) {
+            System.out.println("Expected teams " + i + "-" +
+                    (numPrelims - i) + ": " + roundToDecimal.format(record[i]));
+        }
+
+        prelimPullupStatistics();
+
+        System.out.println("—————————————————————————————————————————————————————————");
+    }
+
+    public static void prelimPullupStatistics() {
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+        boolean printedRound;
+
+        for (int i = 0; i < numPrelims; i++) {
+            printedRound = false;
+
+            for (int j = 0; j < numPrelims; j++) {
+                if (calculator.getPullupRecord()[i][j] > 0) {
+                    if (!printedRound) {
+                        System.out.println("Expected pullups round " + (i + 1) + ":");
+                        printedRound = true;
+                    }
+
+                    System.out.println("From " +
+                            (j - 1) + "-" + (i + 1 - j) + " to " + (j) + "-" + (i - j)
+                            + ": " + calculator.getPullupRecord()[i][j]);
+                }
             }
         }
     }
 
-    private static void generate() {
-        System.out.println("—————————————————————————————————————————————————————————");
+    public static void elimStatistics() {
 
-        // checks if there is a pre-existing tournament
-        if (existing) {
+        System.out.println("Elimination round statistics:");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 
-            // if new inputs necessary
-            if (Tournament.checkDirectory(directory)) {
-
-                // regenerates the tournament
-                System.out.println("Update tournament values:");
-                Tournament.regenerateTournament(directory);
-                System.out.println("—————————————————————————————————————————————————————————");
-            }
+        // prints expected elim size
+        if (calculator.getElimsAdjusted() != numElims) {
+            // yes change --> tells the user
+            System.out.println("The tournament can not break to " + Name.elimName(numElims) + ".");
+            System.out.println("Reason: Number of teams debating is " + Name.elimError(calculator.getElimsAdjusted()) + ".");
+            System.out.println("The tournament must break to a " + Name.elimSize(calculator.getTeamsByed())
+                    + " " + Name.elimName(calculator.getElimsAdjusted()) + ".");
         }
-        // must generate new tournament
         else {
-
-            // generates a new tournament
-            System.out.println("New tournament values:");
-            Tournament.generateNewTournament(directory);
-            System.out.println("—————————————————————————————————————————————————————————");
-            existing = true;
+            // no change --> does not tell the user
+            System.out.println("The tournament will break to a " + Name.elimSize(calculator.getTeamsByed())
+                    + " " + Name.elimName(calculator.getElimsAdjusted()) + ".");
         }
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+        // prints expected elim statistics
+        System.out.println("Expected teams positive: " + roundToDecimal.format(calculator.getTeamsPositive()));
+        System.out.println("Expected teams negative: " + roundToDecimal.format(calculator.getTeamsNegative()));
+        System.out.println("Expected teams breaking: " + roundToDecimal.format(calculator.getTeamsBreaking()));
+        System.out.println("Expected teams screwed: " + roundToDecimal.format(calculator.getTeamsScrewed()));
+        System.out.println("Expected teams debating: " + roundToDecimal.format(calculator.getTeamsDebating()));
+        System.out.println("Expected teams byed: " + roundToDecimal.format(calculator.getTeamsByed()));
+        System.out.println("Expected number of elim debates: " + roundToWhole.format(calculator.getConcurrentElims()));
+        elimBreakStatistics();
+        elimScrewStatistics();
+        elimDebateStatistics();
+        elimByeStatistics();
+        System.out.println("—————————————————————————————————————————————————————————");
+    }
+
+    public static void elimBreakStatistics() {
+        // loops through every bracket
+        if (calculator.getTeamsBreaking() > 0) {
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+            for (int i = 0; i < numPrelims + 1; i++) {
+
+                // if team in that bracket breaking --> print them
+                if (calculator.getBreakRecord()[i] > 0) {
+                    System.out.println("Expected teams " + i + "-" + (numPrelims - i) +
+                            " that break: " + roundToDecimal.format(calculator.getBreakRecord()[i]));
+                }
+            }
+        }
+    }
+
+    public static void elimScrewStatistics() {
+        // loops through every bracket
+        if (calculator.getTeamsScrewed() > 0) {
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+            for (int i = 0; i < numPrelims + 1; i++) {
+
+                // if team in that bracket screwed --> print them
+                if (calculator.getScrewRecord()[i] > 0) {
+                    System.out.println("Expected teams " + i + "-" + (numPrelims - i) +
+                            " that are screwed: " + roundToDecimal.format(calculator.getScrewRecord()[i]));
+                }
+            }
+        }
+    }
+
+    public static void elimDebateStatistics() {
+        // loops through every bracket
+        if (calculator.getTeamsDebating() > 0) {
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+            for (int i = 0; i < numPrelims + 1; i++) {
+
+                // if team in that bracket debating --> print them
+                if (calculator.getDebateRecord()[i] > 0) {
+                    System.out.println("Expected teams " + i + "-" + (numPrelims - i) +
+                            " that are debating: " + roundToDecimal.format(calculator.getDebateRecord()[i]));
+                }
+            }
+        }
+    }
+
+    public static void elimByeStatistics() {
+        // loops through every bracket
+        if (calculator.getTeamsByed() > 0) {
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+            for (int i = 0; i < numPrelims + 1; i++) {
+
+                // if team in that bracket byed --> print them
+                if (calculator.getByeRecord()[i] > 0) {
+                    System.out.println("Expected teams " + i + "-" + (numPrelims - i) +
+                            " that are byed: " + roundToDecimal.format(calculator.getByeRecord()[i]));
+                }
+            }
+        }
+    }
+
+    public static void wikis() {
+        System.out.println("Expected team wikis: ");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+
+        // loops through every team and prints the wiki link format of it
+        for (int i = 0; i < numTeams; i++) {
+            System.out.println("https://opencaselist.com/hspolicy23/" + schoolList[i] + "/" + entryList[i]);
+        }
+
+        System.out.println("—————————————————————————————————————————————————————————");
     }
 }

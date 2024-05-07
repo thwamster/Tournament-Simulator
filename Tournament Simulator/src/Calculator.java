@@ -26,12 +26,12 @@ public class Calculator {
         this.numTeamsByed = 0.0;
         this.numConcurrentElims = 0.0;
 
-        this.record = new double[Main.numPrelims + 1];
-        this.pullupRecord = new double[Main.numPrelims][Main.numPrelims];
-        this.breakRecord = new double[Main.numPrelims + 1];
-        this.screwRecord = new double[Main.numPrelims + 1];
-        this.debateRecord = new double[Main.numPrelims + 1];
-        this.byeRecord = new double[Main.numPrelims + 1];
+        this.record = new double[Statistics.numPrelims + 1];
+        this.pullupRecord = new double[Statistics.numPrelims][Statistics.numPrelims];
+        this.breakRecord = new double[Statistics.numPrelims + 1];
+        this.screwRecord = new double[Statistics.numPrelims + 1];
+        this.debateRecord = new double[Statistics.numPrelims + 1];
+        this.byeRecord = new double[Statistics.numPrelims + 1];
     }
 
     /* Get Methods */
@@ -64,7 +64,7 @@ public class Calculator {
         int[][] currPullupRecord;
 
         // loops a specified number of times
-        for (int i = 0; i < Main.numIterations; i++) {
+        for (int i = 0; i < Statistics.numIterations; i++) {
 
             // runs the simulator
             Simulator tempSimulator = new Simulator();
@@ -86,7 +86,7 @@ public class Calculator {
             }
 
             // adjusts the number of elimination rounds
-            currElimsAdjusted = Main.numElims;
+            currElimsAdjusted = Statistics.numElims;
             while (currTeamsPositive < Math.pow(2, currElimsAdjusted - 1)) {
                 currElimsAdjusted--;
             }
@@ -102,7 +102,7 @@ public class Calculator {
             currConcurrentElims = currTeamsDebating / 2;
 
             // calculates other this.records
-            for (int j = currTeamsNegative; j < Main.numTeams; j++) {
+            for (int j = currTeamsNegative; j < Statistics.numTeams; j++) {
                 int tempWins = tempSimulator.getSimulator().get(j).getNumWins();
 
                 // checks which group they are in
@@ -121,8 +121,8 @@ public class Calculator {
 
             // gets the pullup this.record
             currPullupRecord = tempSimulator.getNumPullups();
-            for (int j = 0; j < Main.numPrelims; j++) {
-                for (int k = 0; k < Main.numPrelims; k++) {
+            for (int j = 0; j < Statistics.numPrelims; j++) {
+                for (int k = 0; k < Statistics.numPrelims; k++) {
                     this.pullupRecord[j][k] += currPullupRecord[j][k];
                 }
             }
@@ -139,26 +139,26 @@ public class Calculator {
         }
 
         // updates class variables
-        this.numElimsAdjusted /= Main.numIterations;
-        this.numTeamsPositive /= Main.numIterations;
-        this.numTeamsNegative /= Main.numIterations;
-        this.numTeamsBreaking /= Main.numIterations;
-        this.numTeamsScrewed /= Main.numIterations;
-        this.numTeamsDebating /= Main.numIterations;
-        this.numTeamsByed /= Main.numIterations;
-        this.numConcurrentElims /= Main.numIterations;
+        this.numElimsAdjusted /= Statistics.numIterations;
+        this.numTeamsPositive /= Statistics.numIterations;
+        this.numTeamsNegative /= Statistics.numIterations;
+        this.numTeamsBreaking /= Statistics.numIterations;
+        this.numTeamsScrewed /= Statistics.numIterations;
+        this.numTeamsDebating /= Statistics.numIterations;
+        this.numTeamsByed /= Statistics.numIterations;
+        this.numConcurrentElims /= Statistics.numIterations;
 
-        for (int i = 0; i < Main.numPrelims + 1; i++) {
-            this.record[i] /= Main.numIterations;
-            this.breakRecord[i] /= Main.numIterations;
-            this.screwRecord[i] /= Main.numIterations;
-            this.debateRecord[i] /= Main.numIterations;
-            this.byeRecord[i] /= Main.numIterations;
+        for (int i = 0; i < Statistics.numPrelims + 1; i++) {
+            this.record[i] /= Statistics.numIterations;
+            this.breakRecord[i] /= Statistics.numIterations;
+            this.screwRecord[i] /= Statistics.numIterations;
+            this.debateRecord[i] /= Statistics.numIterations;
+            this.byeRecord[i] /= Statistics.numIterations;
         }
 
-        for (int i = 0; i < Main.numPrelims; i++) {
-            for (int j = 0; j < Main.numPrelims; j++) {
-                this.pullupRecord[i][j] /= Main.numIterations;
+        for (int i = 0; i < Statistics.numPrelims; i++) {
+            for (int j = 0; j < Statistics.numPrelims; j++) {
+                this.pullupRecord[i][j] /= Statistics.numIterations;
             }
         }
     }

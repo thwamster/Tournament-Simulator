@@ -13,16 +13,11 @@ public class Simulator {
         // sets up the simulation
         this.numRoundsCompleted = 0;
         this.simulator = new ArrayList<>();
-        this.numPullups = new int[Main.numPrelims][Main.numPrelims];
+        this.numPullups = new int[Statistics.numPrelims][Statistics.numPrelims];
 
         // initializes teams
-        for (int i = 0; i < Main.numTeams; i++) {
-            if (Main.teamList[i] != null) {
-                this.simulator.add(new Team(Main.teamList[i], Main.schoolList[i], Main.entryList[i], Main.skillList[i]));
-            }
-            else {
-                this.simulator.add(new Team());
-            }
+        for (int i = 0; i < Statistics.numTeams; i++) {
+            this.simulator.add(new Team(Statistics.teamList[i], Statistics.schoolList[i], Statistics.entryList[i], Statistics.skillList[i]));
         }
     }
 
@@ -33,7 +28,7 @@ public class Simulator {
     /* Simulate Methods */
     public void simulate() {
         // simulates the tournament
-        for (int i = 0; i < Main.numPrelims; i++) {
+        for (int i = 0; i < Statistics.numPrelims; i++) {
             sideLocks();
             round();
             this.numRoundsCompleted++;
@@ -51,7 +46,7 @@ public class Simulator {
         }
 
         // checks if odd number of teams
-        if (Main.numTeams % 2 == 1) {
+        if (Statistics.numTeams % 2 == 1) {
             // worst team --> BYE
             this.simulator.get(0).setSideLock(0);
             this.simulator.get(0).setPaired(true);
@@ -65,7 +60,7 @@ public class Simulator {
         // even round
         if (this.numRoundsCompleted % 2 == 0) {
             // loops through all teams
-            for (int i = 0; i < Main.numTeams; i++) {
+            for (int i = 0; i < Statistics.numTeams; i++) {
 
                 // checks if already paired
                 if (!this.simulator.get(i).getPaired()) {
@@ -98,18 +93,18 @@ public class Simulator {
         Team team2;
 
         // loops through team 1
-        for (int i = 0; i < Main.numTeams; i++) {
+        for (int i = 0; i < Statistics.numTeams; i++) {
             team1 = this.simulator.get(i);
 
             // loops through team 2
-            for (int j = 0; j < Main.numTeams; j++) {
+            for (int j = 0; j < Statistics.numTeams; j++) {
                 team2 = this.simulator.get(j);
 
                 // checks compatibility
                 if (!team1.getPaired() && !team2.getPaired() && i != j &&
-                   (team1.getSideLock() == -team2.getSideLock() || numRoundsCompleted <= 2) &&
-                   (!team1.getSchool().equals(team2.getSchool()) || Main.teamList[i] == null) &&
-                    !team1.hasHitBefore(team2.getTeamName())) {
+                        (team1.getSideLock() == -team2.getSideLock() || numRoundsCompleted <= 2) &&
+                        (!team1.getSchool().equals(team2.getSchool()) || Statistics.teamList[i] == null) &&
+                        !team1.hasHitBefore(team2.getTeamName())) {
 
                     // pairing
                     this.simulator.get(i).setPaired(true);

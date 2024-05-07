@@ -3,6 +3,7 @@ public class Name {
     public static String elimName(int inputNumElims) {
         // returns the name for the given elimination round
         return switch (inputNumElims) {
+            case 0 -> "Champions";
             case 1 -> "Finals";
             case 2 -> "Semifinals";
             case 3 -> "Quarterfinals";
@@ -24,12 +25,12 @@ public class Name {
         }
     }
 
-    public static String elimError(int inputNumElimsAdjusted) {
+    public static String elimError(int inputNumElims, int inputNumElimsAdjusted) {
         // returns the name for the given elimination round
-        if (inputNumElimsAdjusted == Main.numElims) {
+        if (inputNumElimsAdjusted == inputNumElims) {
             return "accurate";
         }
-        else if (inputNumElimsAdjusted > Main.numElims) {
+        else if (inputNumElimsAdjusted > inputNumElims) {
             return "too large";
         }
         else {

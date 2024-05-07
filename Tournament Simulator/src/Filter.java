@@ -1,5 +1,5 @@
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Filter {
     /* Variables */
@@ -63,6 +63,26 @@ public class Filter {
                 inputText.indexOf("&") + 2 > inputText.length() - 1;
     }
 
+    public static boolean invalidDirectory(String inputText) {
+        int inputValue;
+
+        // checks if input is empty
+        if (inputText == null) {
+            return true;
+        }
+
+        // checks if input is not an integer
+        try {
+            inputValue = Integer.parseInt(inputText);
+        }
+        catch (NumberFormatException nfe) {
+            return true;
+        }
+
+        // checks if input is a valid directory
+        return inputValue < -1 || inputValue > 2;
+    }
+
     /* Filter Methods */
     public static int filterWholeNum(String outputQuestion) {
         String inputText = "";
@@ -88,8 +108,8 @@ public class Filter {
         return inputValue;
     }
 
-    public static double[] filterDouble(String outputQuestion) {
-        double[] inputValues = new double[Main.numTeams];
+    public static double[] filterSkill(String outputQuestion, int inputNum) {
+        double[] inputSkills = new double[inputNum];
         String inputText = "";
         boolean exitTriggered = false;
 
@@ -97,7 +117,7 @@ public class Filter {
 
         // assigns every input to the array
         exit:
-        for (int i = 0; i < Main.numTeams; i++) {
+        for (int i = 0; i < inputNum; i++) {
 
             // loops until the input is valid
             while (invalidDouble(inputText)) {
@@ -119,7 +139,7 @@ public class Filter {
                 else {
 
                     // valid --> assigns input
-                    inputValues[i] = Double.parseDouble(inputText);
+                    inputSkills[i] = Double.parseDouble(inputText);
                 }
             }
 
@@ -130,16 +150,16 @@ public class Filter {
         // loops if exit was triggered
         if (exitTriggered) {
             Random random = new Random();
-            for (int i = 0; i < Main.numTeams; i++) {
-                inputValues[i] = random.nextGaussian();
+            for (int i = 0; i < inputNum; i++) {
+                inputSkills[i] = random.nextGaussian();
             }
         }
 
-        return inputValues;
+        return inputSkills;
     }
 
-    public static String[] filterCode(String outputQuestion) {
-        String[] inputCodes = new String[Main.numTeams];
+    public static String[] filterCode(String outputQuestion, int inputNum) {
+        String[] inputCodes = new String[inputNum];
         String inputText = "";
         boolean exitTriggered = false;
 
@@ -147,7 +167,7 @@ public class Filter {
 
         // assigns every input to the array
         exit:
-        for (int i = 0; i < Main.numTeams; i++) {
+        for (int i = 0; i < inputNum; i++) {
 
             // loops until the input is valid
             while (invalidCode(inputText)) {
@@ -179,7 +199,7 @@ public class Filter {
 
         // loops if exit was triggered
         if (exitTriggered) {
-            for (int i = 0; i < Main.numTeams; i++) {
+            for (int i = 0; i < inputNum; i++) {
                 inputCodes[i] = "School" + i;
             }
         }
@@ -187,8 +207,8 @@ public class Filter {
         return inputCodes;
     }
 
-    public static String[] filterEntry(String outputQuestion) {
-        String[] inputEntries = new String[Main.numTeams];
+    public static String[] filterEntry(String outputQuestion, int inputNum) {
+        String[] inputEntries = new String[inputNum];
         String inputText = "";
         boolean exitTriggered = false;
 
@@ -196,7 +216,7 @@ public class Filter {
 
         // assigns every input to the array
         exit:
-        for (int i = 0; i < Main.numTeams; i++) {
+        for (int i = 0; i < inputNum; i++) {
 
             // loops until the input is valid
             while (invalidEntry(inputText)) {
@@ -234,11 +254,35 @@ public class Filter {
 
         // loops if exit was triggered
         if (exitTriggered) {
-            for (int i = 0; i < Main.numTeams; i++) {
+            for (int i = 0; i < inputNum; i++) {
                 inputEntries[i] = "Entry" + i;
             }
         }
 
         return inputEntries;
+    }
+
+    public static int filterDirectory(String outputQuestion) {
+        String inputText = "";
+        int inputValue = 0;
+
+        // loops until the input is valid
+        while (invalidDirectory(inputText)) {
+            System.out.print(outputQuestion);
+            inputText = inputScanner.nextLine();
+
+            // checks if the input is still invalid
+            if (invalidDirectory(inputText)) {
+
+                // invalid --> asks for new input
+                System.out.println("Input invalid. Please reenter.");
+            }
+            else {
+
+                // valid --> assigns input
+                inputValue = Integer.parseInt(inputText);
+            }
+        }
+        return inputValue;
     }
 }

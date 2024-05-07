@@ -18,7 +18,7 @@ public class Team {
         this.skill = 0.0;
         this.numWins = 0;
         this.numLosses = 0;
-        this.pairingHistory = new String[Main.numPrelims];
+        this.pairingHistory = new String[Statistics.numPrelims];
     }
 
     public Team(String inputName, String inputSchool, String inputEntry, double inputSkill) {
@@ -28,7 +28,7 @@ public class Team {
         this.skill = inputSkill;
         this.numWins = 0;
         this.numLosses = 0;
-        this.pairingHistory = new String[Main.numPrelims];
+        this.pairingHistory = new String[Statistics.numPrelims];
     }
 
     /* Get Methods */
@@ -87,5 +87,9 @@ public class Team {
                 this.sideLock = -1;
             }
         }
+    }
+
+    public String toString() {
+        return this.teamName;
     }
 }

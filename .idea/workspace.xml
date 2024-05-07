@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7877d6b6-bd08-4aee-a9ef-aeacf1e379ed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tournament Simulator/.idea/libraries/commons_lang3_3_14_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tournament Simulator/.idea/libraries/commons_text_1_11_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tournament Simulator/Test 2.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tournament Simulator/Tournament Simulator.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tournament Simulator/untitled.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tournament-Simulator.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/ElimBracket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/ElimName.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/InputFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/InputParse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/JaroWinklerScore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/OpenCaselist.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/PrelimSimulator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/Statistics.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/Team.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tournament-Simulator/Tournament.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

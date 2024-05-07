@@ -7,28 +7,20 @@ public class Team {
     private int numWins;
     private int numLosses;
     private boolean paired;
-    private final String[] pairingHistory;
+    private String[] pairingHistory = new String[0];
     private int sideLock;
 
     /* Constructor */
-    public Team() {
-        this.teamName = "";
-        this.school = "";
-        this.entry = "";
-        this.skill = 0.0;
-        this.numWins = 0;
-        this.numLosses = 0;
-        this.pairingHistory = new String[Statistics.numPrelims];
-    }
-
     public Team(String inputName, String inputSchool, String inputEntry, double inputSkill) {
         this.teamName = inputName;
         this.school = inputSchool;
         this.entry = inputEntry;
         this.skill = inputSkill;
-        this.numWins = 0;
-        this.numLosses = 0;
-        this.pairingHistory = new String[Statistics.numPrelims];
+        if (Tournament.numPrelims != -1) {
+            this.numWins = 0;
+            this.numLosses = 0;
+            this.pairingHistory = new String[Tournament.numPrelims];
+        }
     }
 
     /* Get Methods */
@@ -89,7 +81,5 @@ public class Team {
         }
     }
 
-    public String toString() {
-        return this.teamName;
-    }
+    public String toString() { return this.teamName; }
 }

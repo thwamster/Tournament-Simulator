@@ -76,13 +76,13 @@ Number of teams debating: 92
 Number of prelim rounds: 7
 Number of elim rounds: 6
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-List of team codes:                                       // copy-pasted from tabroom
+List of team codes:                                       // all of these copy-pasted from tabroom into a spreadsheet, then copy-pasted back into the program.
 Alpharetta MK
 Altamont DS
 [...]                                                     // removed for readability
 Wichita East HR
 Wylie E. Groves XC
-List of entry names:                                      // copy-pasted from tabroom
+List of entry names:=
 Kohli & Mahesh
 Denson & Stumpff
 [...]                                                     // removed for readability
@@ -235,5 +235,91 @@ https://opencaselist.com/hspolicy23/EleanorRoosevelt/DeSt
 [...]                                                     // removed for readability
 https://opencaselist.com/hspolicy23/WichitaEast/HaRa
 https://opencaselist.com/hspolicy23/WylieEGroves/XiCh
+—————————————————————————————————————————————————————————
+```
+
+The following are example outputs based on made-up data.
+
+Preliminary & elimination statistics:
+```
+Enter directory: 1
+—————————————————————————————————————————————————————————
+New tournament values:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Number of teams debating: 10
+Number of prelim rounds: 3
+Number of elim rounds: 3
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+List of team codes: 
+n/a
+List of entry names: 
+n/a
+List of team elos: 
+n/a
+—————————————————————————————————————————————————————————
+Preliminary round statistics:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected teams 0-3: 1.7
+Expected teams 1-2: 3.3
+Expected teams 2-1: 3.3
+Expected teams 3-0: 1.7
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected pullups round 2:
+From 0-1 to 1-0: 1
+Expected pullups round 3:
+From 0-2 to 1-1: 0.9
+From 1-1 to 2-0: 0.8
+—————————————————————————————————————————————————————————
+Enter directory: 2
+—————————————————————————————————————————————————————————
+Elimination round statistics:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+The tournament will break to a partial Quarterfinals.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected teams positive: 5
+Expected teams negative: 5
+Expected teams breaking: 5
+Expected teams screwed: 0
+Expected teams debating: 2
+Expected teams byed: 3
+Expected number of elim debates: 1
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected teams 2-1 that break: 3.3
+Expected teams 3-0 that break: 1.7
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected teams 2-1 that are debating: 2
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected teams 2-1 that are byed: 1.3
+Expected teams 3-0 that are byed: 1.7
+—————————————————————————————————————————————————————————
+```
+
+Elimination bracket:
+```
+Enter directory: 3
+—————————————————————————————————————————————————————————
+New tournament values:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Number of teams breaking: 10
+Number of elim rounds: 3
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+List of team codes: 
+n/a
+List of entry names: 
+n/a
+List of team elos: 
+n/a
+—————————————————————————————————————————————————————————
+The tournament will break to a full Quarterfinals.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Quarterfinals: 	Semifinals:    	Finals:        	Champions:     
+School0Entry0  	School0Entry0  	School0Entry0  	School0Entry0  
+School8Entry8  
+School4Entry4  	School3Entry3  
+School3Entry3  
+School2Entry2  	School2Entry2  	School1Entry1  
+School5Entry5  
+School9Entry9  	School1Entry1  
+School1Entry1  
 —————————————————————————————————————————————————————————
 ```

@@ -60,7 +60,7 @@ Note: Type 'n/a' when prompted to input team data to
 
 ## Contributing
 
-If you would like to, please feel free to submit a pull request to improve this code. It was written with limited knowledge of Java and quite likely has errors or and opaque operations that can be clarified.
+If you would like to, please feel free to submit a pull request to improve this code. It was written with limited knowledge of Java and quite likely has errors or opaque operations that can be clarified.
 This program was written to be consistent across directories. Accuracy is appreciated, but not the sole purpose of the code.
 
 ## Known Issues

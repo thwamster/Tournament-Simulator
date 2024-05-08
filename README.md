@@ -63,6 +63,12 @@ Note: Type 'n/a' when prompted to input team data to
 If you would like to, please feel free to submit a pull request to improve this code. It was written with limited knowledge of Java and quite likely has errors or and opaque operations that can be clarified.
 This program was written to be consistent across directories. Accuracy is appreciated, but not the sole purpose of the code.
 
+## Known Issues
+
+- When elo is not entered, the prelim statistics generator defaults to a normal distribution across the teams where the team with the higher skill always wins. This magnifies inaccuracy at the top and bottom of the bracket.
+- The pull-up statistics sometimes are wildly off, and I don't know why or how to fix it.
+- The code is inefficient when iterating over the simulation many times to get large amounts of data to average. At this scale, it does not matter, but it could be better.
+
 ## Examples
 
 The following are example outputs based on data from the 2024 Tournament of Champions.

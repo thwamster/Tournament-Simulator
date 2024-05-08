@@ -159,7 +159,6 @@ Expected teams 7-0 that are byed: 1.3
 
 Elimination bracket:
 ```
-Enter directory: 3
 —————————————————————————————————————————————————————————
 New tournament values:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -225,9 +224,7 @@ PeninsulaLaLa
 
 OpenCaselist wiki links:
 ```
-—————————————————————————————————————————————————————————
-Enter directory: 4                                        // note: these have a chance to be inaccurate based on which name is first on tabroom.
-—————————————————————————————————————————————————————————
+————————————————————————————————————————————————————————— // note: these have a chance to be inaccurate based on which name is first on tabroom.
 Expected team wikis:                                      // it's usually right because coaches like to input the names the same on tabroom and the wiki.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 https://opencaselist.com/hspolicy23/Alpharetta/KoMa
@@ -242,7 +239,6 @@ The following are example outputs based on made-up data.
 
 Preliminary & elimination statistics:
 ```
-Enter directory: 1
 —————————————————————————————————————————————————————————
 New tournament values:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -296,7 +292,6 @@ Expected teams 3-0 that are byed: 1.7
 
 Elimination bracket:
 ```
-Enter directory: 3
 —————————————————————————————————————————————————————————
 New tournament values:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

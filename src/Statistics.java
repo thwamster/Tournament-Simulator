@@ -43,7 +43,7 @@ public class Statistics {
             currTeamsNegative = 0;
             for (Team tempTeam : tempSimulator.getSimulator()) {
                 // counts the number of teams that broke
-                if (tempTeam.getNumWins() > tempTeam.getNumLosses()) {
+                if (2 * tempTeam.getNumWins() > 3 * tempTeam.getNumLosses()) {
                     currTeamsPositive++;
                 } else {
                     currTeamsNegative++;

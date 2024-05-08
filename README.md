@@ -63,4 +63,177 @@ Note: Type 'n/a' when prompted to input team data to
 If you would like to, please feel free to submit a pull request to improve this code.It was written with limited knowledge of Java and quite likely has errors or and opaque operations that can be clarified.
 This program was written to be consistent across directories. Accuracy is appreciated, but not the sole purpose of the code.
 
+## Examples
 
+The following are example outputs based on data from the 2024 Tournament of Champions.
+
+Preliminary & elimination round statistics:
+```
+—————————————————————————————————————————————————————————
+New tournament values:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Number of teams debating: 92
+Number of prelim rounds: 7
+Number of elim rounds: 6
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+List of team codes:                                       // copy-pasted from tabroom
+Alpharetta MK
+Altamont DS
+[...]                                                     // removed for readability
+Wichita East HR
+Wylie E. Groves XC
+List of entry names:                                      // copy-pasted from tabroom
+Kohli & Mahesh
+Denson & Stumpff
+[...]                                                     // removed for readability
+Hale & RaviXie & Charabuddi
+List of team elos: 
+n/a
+—————————————————————————————————————————————————————————
+Preliminary round statistics:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected teams 0-7: 1.3
+Expected teams 1-6: 5.4
+Expected teams 2-5: 15
+Expected teams 3-4: 24.3
+Expected teams 4-3: 24.3
+Expected teams 5-2: 14.8
+Expected teams 6-1: 5.6
+Expected teams 7-0: 1.3
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected pullups round 2:
+From 0-1 to 1-0: 0
+Expected pullups round 3:
+From 0-2 to 1-1: 1
+From 1-1 to 2-0: 1
+Expected pullups round 4:
+From 0-3 to 1-2: 2
+From 1-2 to 2-1: 2.8
+From 2-1 to 3-0: 1.9
+Expected pullups round 5:
+From 0-4 to 1-3: 0.5
+From 1-3 to 2-2: 0.6
+From 2-2 to 3-1: 0.6
+From 3-1 to 4-0: 0.4
+Expected pullups round 6:
+From 0-5 to 1-4: 1.5
+From 1-4 to 2-3: 2.7
+From 2-3 to 3-2: 3.4
+From 3-2 to 4-1: 2.8
+From 4-1 to 5-0: 1.4
+Expected pullups round 7:
+From 0-6 to 1-5: 0.5
+From 1-5 to 2-4: 0.6
+From 2-4 to 3-3: 0.6
+From 3-3 to 4-2: 0.6
+From 4-2 to 5-1: 0.6
+From 5-1 to 6-0: 0.3
+—————————————————————————————————————————————————————————
+Enter directory: 2
+—————————————————————————————————————————————————————————
+Elimination round statistics:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+The tournament will break to a partial Tripleoctofinals.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected teams positive: 46
+Expected teams negative: 46
+Expected teams breaking: 46
+Expected teams screwed: 0
+Expected teams debating: 28
+Expected teams byed: 18
+Expected number of elim debates: 14
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected teams 4-3 that break: 24.3
+Expected teams 5-2 that break: 14.9
+Expected teams 6-1 that break: 5.6
+Expected teams 7-0 that break: 1.3
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected teams 4-3 that are debating: 24.3
+Expected teams 5-2 that are debating: 3.7
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Expected teams 5-2 that are byed: 11.1
+Expected teams 6-1 that are byed: 5.6
+Expected teams 7-0 that are byed: 1.3
+—————————————————————————————————————————————————————————
+```
+
+Elimination bracket:
+```
+Enter directory: 3
+—————————————————————————————————————————————————————————
+New tournament values:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Number of teams breaking: 22
+Number of elim rounds: 5
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+List of team codes: 
+Liberal Arts and Science BD
+Peninsula LL
+[...]                                                     // removed for readability
+Lowell CL
+Liberal Arts and Science LF
+List of entry names: 
+Barrett & Dollinger
+Lai & Lai
+[...]                                                     // removed for readability
+Chen & Liu
+Low & Faisal
+List of team elos: 
+22
+21
+[...]                                                     // removed for readability
+2
+1
+—————————————————————————————————————————————————————————
+The tournament will break to a partial Doubleoctofinals.  // obviously the following isn't correct because of upsets, but this is what it would look like determined by numerical seeds.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Doubleoctofinals:                	Octofinals:                      	Quarterfinals:                   	Semifinals:                      	Finals:                          	Champions:                       
+LiberalArtsAndScienceAcademyBaDo 	LiberalArtsAndScienceAcademyBaDo 	LiberalArtsAndScienceAcademyBaDo 	LiberalArtsAndScienceAcademyBaDo 	LiberalArtsAndScienceAcademyBaDo 	LiberalArtsAndScienceAcademyBaDo 
+BYE                             
+NotreDameChKa                    	PeninsulaLiYu                    
+PeninsulaLiYu                    
+BaltimoreCityCollegeSeEr         	BaltimoreCityCollegeSeEr         	MontgomeryBellLMLeMa             
+BYE                             
+BYE                             	MontgomeryBellLMLeMa             
+MontgomeryBellLMLeMa             
+MontgomeryBellLMGeHo             	MontgomeryBellLMGeHo             	MontgomeryBellLMGeHo             	WestwoodShTr                     
+BYE                             
+LowellChLi                       	MeadowsBoPa                      
+MeadowsBoPa                      
+NorthviewChPo                    	NorthviewChPo                    	WestwoodShTr                     
+LiberalArtsAndScienceAcademyBoSo 
+BYE                             	WestwoodShTr                     
+WestwoodShTr                     
+USNShEs                          	USNShEs                          	USNShEs                          	USNShEs                          	PeninsulaLaLa                    
+BYE                             
+PeninsulaLiQi                    	LittleRockCentralMiBa            
+LittleRockCentralMiBa            
+MontgomeryBellLMMaTu             	MontgomeryBellLMMaTu             	BellarmineKrLi                   
+LiberalArtsAndScienceAcademyLoFa 
+BYE                             	BellarmineKrLi                   
+BellarmineKrLi                   
+BerkeleyPreparatorySchoolVaRo    	BerkeleyPreparatorySchoolVaRo    	BerkeleyPreparatorySchoolVaRo    	PeninsulaLaLa                    
+BYE                             
+BYE                             	GreenhillSchoolLiCh              
+GreenhillSchoolLiCh              
+NewTrierLeSh                     	NewTrierLeSh                     	PeninsulaLaLa                    
+WestwoodJaAn                     
+BYE                             	PeninsulaLaLa                    
+PeninsulaLaLa                    
+—————————————————————————————————————————————————————————
+```
+
+OpenCaselist wiki links:
+```
+—————————————————————————————————————————————————————————
+Enter directory: 4                                        // note: these have a chance to be inaccurate based on which name is first on tabroom.
+—————————————————————————————————————————————————————————
+Expected team wikis:                                      // it's usually right because coaches like to input the names the same on tabroom and the wiki.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+https://opencaselist.com/hspolicy23/Alpharetta/KoMa
+https://opencaselist.com/hspolicy23/EleanorRoosevelt/DeSt
+[...]                                                     // removed for readability
+https://opencaselist.com/hspolicy23/WichitaEast/HaRa
+https://opencaselist.com/hspolicy23/WylieEGroves/XiCh
+—————————————————————————————————————————————————————————
+```

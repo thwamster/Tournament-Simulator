@@ -74,42 +74,33 @@ New tournament values:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Number of teams debating: 92
 Number of prelim rounds: 7
-Number of elim rounds: 6
+Number of elim rounds: 5
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-List of team codes:                                       // all of these copy-pasted from tabroom into a spreadsheet, then copy-pasted back into the program.
-Alpharetta MK
-Altamont DS
-[...]                                                     // removed for readability
-Wichita East HR
-Wylie E. Groves XC
-List of entry names:=
-Kohli & Mahesh
-Denson & Stumpff
-[...]                                                     // removed for readability
-Hale & RaviXie & Charabuddi
+List of team codes: 
+n/a
+List of entry names: 
+n/a
 List of team elos: 
 n/a
 —————————————————————————————————————————————————————————
 Preliminary round statistics:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Expected teams 0-7: 1.3
-Expected teams 1-6: 5.4
-Expected teams 2-5: 15
+Expected teams 1-6: 5.5
+Expected teams 2-5: 14.9
 Expected teams 3-4: 24.3
-Expected teams 4-3: 24.3
-Expected teams 5-2: 14.8
+Expected teams 4-3: 24.2
+Expected teams 5-2: 14.9
 Expected teams 6-1: 5.6
 Expected teams 7-0: 1.3
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Expected pullups round 2:
-From 0-1 to 1-0: 0
 Expected pullups round 3:
 From 0-2 to 1-1: 1
 From 1-1 to 2-0: 1
 Expected pullups round 4:
-From 0-3 to 1-2: 2
-From 1-2 to 2-1: 2.8
-From 2-1 to 3-0: 1.9
+From 0-3 to 1-2: 1.9
+From 1-2 to 2-1: 2.9
+From 2-1 to 3-0: 1.8
 Expected pullups round 5:
 From 0-4 to 1-3: 0.5
 From 1-3 to 2-2: 0.6
@@ -117,14 +108,14 @@ From 2-2 to 3-1: 0.6
 From 3-1 to 4-0: 0.4
 Expected pullups round 6:
 From 0-5 to 1-4: 1.5
-From 1-4 to 2-3: 2.7
-From 2-3 to 3-2: 3.4
+From 1-4 to 2-3: 2.8
+From 2-3 to 3-2: 3.5
 From 3-2 to 4-1: 2.8
-From 4-1 to 5-0: 1.4
+From 4-1 to 5-0: 1.5
 Expected pullups round 7:
-From 0-6 to 1-5: 0.5
+From 0-6 to 1-5: 0.4
 From 1-5 to 2-4: 0.6
-From 2-4 to 3-3: 0.6
+From 2-4 to 3-3: 0.5
 From 3-3 to 4-2: 0.6
 From 4-2 to 5-1: 0.6
 From 5-1 to 6-0: 0.3
@@ -133,25 +124,23 @@ Enter directory: 2
 —————————————————————————————————————————————————————————
 Elimination round statistics:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-The tournament will break to a partial Tripleoctofinals.
+The tournament will break to a partial Doubleoctofinals.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Expected teams positive: 46
-Expected teams negative: 46
-Expected teams breaking: 46
+Expected teams positive: 21.7
+Expected teams negative: 70.4
+Expected teams breaking: 21.7
 Expected teams screwed: 0
-Expected teams debating: 28
-Expected teams byed: 18
-Expected number of elim debates: 14
+Expected teams debating: 11.4
+Expected teams byed: 10.3
+Expected number of elim debates: 6
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Expected teams 4-3 that break: 24.3
-Expected teams 5-2 that break: 14.9
+Expected teams 5-2 that break: 14.8
 Expected teams 6-1 that break: 5.6
 Expected teams 7-0 that break: 1.3
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Expected teams 4-3 that are debating: 24.3
-Expected teams 5-2 that are debating: 3.7
+Expected teams 5-2 that are debating: 11.4
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Expected teams 5-2 that are byed: 11.1
+Expected teams 5-2 that are byed: 3.5
 Expected teams 6-1 that are byed: 5.6
 Expected teams 7-0 that are byed: 1.3
 —————————————————————————————————————————————————————————
